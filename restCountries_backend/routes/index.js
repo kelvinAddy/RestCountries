@@ -22,7 +22,7 @@ app.get("/countries/data", (req, res, next) => {
     .catch(next);
 });
 
-app.get(/^\/countries\/[A-Za-z%0-9]+$/, (req, res) => res.sendFile(path.resolve("./public/dist/index.html")));
+app.get(/^\/countries\/[^/]+$/, (req, res) => res.sendFile(path.resolve("./public/dist/index.html")));
 
 app.use((error, req, res, next) => {
   console.log(error.message);
