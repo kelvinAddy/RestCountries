@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "deployToBackend": "build cp -r dist ../restCountries_backend/public rm -rf dist",
+    "deploytobackend": "vite build && cp -r dist ../restCountries_backend/public && rm -rf dist",
     "lint": "eslint .",
     "preview": "vite preview",
     "server": "json-server -p 10000 ./src/data.json"
