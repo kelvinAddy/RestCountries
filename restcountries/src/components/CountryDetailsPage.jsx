@@ -1,12 +1,10 @@
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 
 const CountryDetailsPage = ({ country, getBorderCountries }) => {
-  let navigate = useNavigate();
   return (
     <section className="flex flex-col justify-center items-center dark:text-white">
       <div className="w-12/13">
-        <button onClick={() => navigate(-1)} className="dark:bg-gray-900 flex gap-x-2 items-center rounded-md shadow-md px-6 py-2 w-max cursor-pointer">
+        <Link to={"/"} className="dark:bg-gray-900 flex gap-x-2 items-center rounded-md shadow-md px-6 py-2 w-max cursor-pointer">
           <svg className="dark:fill-white fill-black" width="17" height="11" viewBox="0 0 17 11" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
               fill-rule="evenodd"
@@ -15,7 +13,7 @@ const CountryDetailsPage = ({ country, getBorderCountries }) => {
             />
           </svg>
           <span>Back</span>
-        </button>
+        </Link>
         <div className="mb-8 flex flex-col gap-y-12 lg:flex-row lg:gap-x-20 lg:items-center">
           <div className="mt-16 lg:w-180">
             <img className="w-full object-cover rounded-sm" src={country.flags.svg} />
