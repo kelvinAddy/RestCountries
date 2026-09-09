@@ -23,10 +23,8 @@ const CountryDetails = (props) => {
 };
 
 const CountryCard = ({ country }) => {
-  const navigateToDetailsPage = () => {};
-
   return (
-    <div onClick={navigateToDetailsPage} className="rounded-md shadow-md w-80 h-96 dark:bg-gray-900 flex flex-col">
+    <div className="rounded-md shadow-md w-80 h-96 dark:bg-gray-900 flex flex-col">
       <FlagImage flags={country.flags} />
       <CountryDetails name={country.name} capital={country.capital} region={country.region} population={country.population} />
     </div>
