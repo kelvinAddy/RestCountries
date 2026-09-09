@@ -22,7 +22,7 @@ const App = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:10000/data")
+      .get("countries/data")
       .then((res) => res.data)
       .then((data) => {
         setCountryData(data);

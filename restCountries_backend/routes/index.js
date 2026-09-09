@@ -1,0 +1,34 @@
+require("dotenv").config();
+const express = require("express");
+const app = express();
+const mongoose = require("mongoose");
+const morgan = require("morgan");
+const { CountryModel } = require("../models/Countries.js");
+
+app.use(express.json());
+
+morgan.token("body", (req, res) => {
+  JSON.stringify(req.body);
+});
+
+app.use(morgan(":method :url :status :res[content-length] - :response-time ms :body"));
+
+app.get("/countries/data", (req, res, next) => {
+  CountryModel.find({})
+    .then((data) => res.json(data))
+    .catch(next);
+});
+
+app.use((error, req, res, next) => {
+  console.log(error.message);
+});
+
+mongoose
+  .connect(process.env.MONGODB_URI, { family: 4 })
+  .then(() => {
+    console.log("Database connected");
+    app.listen(process.env.PORT, () => {
+      console.log(`Server is running on PORT: ${process.env.PORT}`);
+    });
+  })
+  .catch((error) => console.log(error.message));
