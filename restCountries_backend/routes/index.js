@@ -7,6 +7,8 @@ const { CountryModel } = require("../models/Countries.js");
 
 app.use(express.json());
 
+app.use(express.static("./public/dist"));
+
 morgan.token("body", (req, res) => {
   JSON.stringify(req.body);
 });
