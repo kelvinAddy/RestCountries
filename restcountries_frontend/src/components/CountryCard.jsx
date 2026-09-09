@@ -30,5 +30,4 @@ const CountryCard = ({ country }) => {
     </div>
   );
 };
-export { FlagImage };
 export default CountryCard;
