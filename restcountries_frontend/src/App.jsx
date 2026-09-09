@@ -13,8 +13,8 @@ const App = () => {
   const [updateCountries, setUpdateCountries] = useState(false);
   const [filterData, setFilterData] = useState([]);
   const [searchData, setSearchData] = useState("");
+
   const match = useMatch("/countries/:id");
-  const matchedCountry = match ? countryData.find((country) => country.name === match.params.id) : null;
 
   const getBorderCountries = (borderArray) => {
     return borderArray.map((borderCountry) => countryData.find((data) => data.alpha3Code === borderCountry).name);
@@ -22,7 +22,7 @@ const App = () => {
 
   useEffect(() => {
     axios
-      .get("countries/data")
+      .get("/countries/data")
       .then((res) => res.data)
       .then((data) => {
         setCountryData(data);
@@ -31,6 +31,7 @@ const App = () => {
   }, []);
 
   if (!countryData) return;
+  const matchedCountry = match ? countryData.find((country) => country.name === match.params.id) : null;
   return (
     <>
       <Header />
