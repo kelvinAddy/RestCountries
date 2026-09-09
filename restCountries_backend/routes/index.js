@@ -4,6 +4,7 @@ const app = express();
 const mongoose = require("mongoose");
 const morgan = require("morgan");
 const { CountryModel } = require("../models/Countries.js");
+const path = require("path");
 
 app.use(express.json());
 
@@ -20,6 +21,8 @@ app.get("/countries/data", (req, res, next) => {
     .then((data) => res.json(data))
     .catch(next);
 });
+
+app.get(/^\/countries\/[A-Za-z%0-9]+$/, (req, res) => res.sendFile(path.resolve("./public/dist/index.html")));
 
 app.use((error, req, res, next) => {
   console.log(error.message);
