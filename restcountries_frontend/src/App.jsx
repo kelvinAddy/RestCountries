@@ -1,8 +1,8 @@
 import Header from "./components/Header";
 import RegionFilter from "./components/RegionFilter";
 import SearchBar from "./components/SearchBar";
-import CountryDetailsPage from "./components/CountryDetailsPage";
 import CountryList from "./components/CountryList";
+import CountryDetailsPage from "./pages/CountryDetailsPage";
 import { Routes, Route, useMatch } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
