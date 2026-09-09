@@ -1,0 +1,42 @@
+import { useEffect, useState } from "react";
+const SearchBar = ({ countryData, updateCountries, setCountriesToRender, filterData, setSearchData }) => {
+  const [results, setResults] = useState([]);
+  const [query, setQuery] = useState("");
+
+  useEffect(() => {
+    setCountriesToRender(results);
+  }, [query]);
+
+  const handleSearch = (e) => {
+    setQuery(e.target.value);
+    setSearchData(e.target.value);
+    getSearchResults(e);
+  };
+  console.log(query, results);
+  const getSearchResults = (e) => {
+    const data = updateCountries ? filterData : countryData;
+    setResults(data.filter((country) => country.name.toLowerCase().includes(e.target.value.toLowerCase())));
+  };
+
+  return (
+    <div className="relative dark:bg-gray-900 rounded-md">
+      <svg className="fill-gray-250 dark:fill-white absolute left-4 top-5 w-5 h-5" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M11.1111 9.77778H10.4L10.1333 9.51111C11.0222 8.53333 11.5556 7.2 11.5556 5.77778C11.5556 2.57778 8.97778 0 5.77778 0C2.57778 0 0 2.57778 0 5.77778C0 8.97778 2.57778 11.5556 5.77778 11.5556C7.2 11.5556 8.53333 11.0222 9.51111 10.1333L9.77778 10.4V11.1111L14.2222 15.5556L15.5556 14.2222L11.1111 9.77778ZM5.77778 9.77778C3.55556 9.77778 1.77778 8 1.77778 5.77778C1.77778 3.55556 3.55556 1.77778 5.77778 1.77778C8 1.77778 9.77778 3.55556 9.77778 5.77778C9.77778 8 8 9.77778 5.77778 9.77778Z"
+        />
+      </svg>
+
+      <input
+        onChange={handleSearch}
+        value={query}
+        className="w-full rounded-md px-14 py-4 shadow-md placeholder:text-gray-250 dark:text-white dark:placeholder:text-white placeholder:text-3 placeholder: "
+        type="text"
+        placeholder="Search for a country..."
+      />
+    </div>
+  );
+};
+
+export default SearchBar;
