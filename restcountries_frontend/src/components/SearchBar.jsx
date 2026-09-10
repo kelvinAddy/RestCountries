@@ -1,26 +1,14 @@
-import { useEffect, useState } from "react";
-const SearchBar = ({ countryData, updateCountries, setCountriesToRender, filterData, setSearchData }) => {
-  const [results, setResults] = useState([]);
-  const [query, setQuery] = useState("");
-
-  useEffect(() => {
-    setCountriesToRender(results);
-  }, [query]);
-
+const SearchBar = ({ setQuery, query }) => {
   const handleSearch = (e) => {
     setQuery(e.target.value);
-    setSearchData(e.target.value);
-    getSearchResults(e);
   };
-  console.log(query, results);
-  const getSearchResults = (e) => {
-    const data = updateCountries ? filterData : countryData;
-    setResults(data.filter((country) => country.name.toLowerCase().includes(e.target.value.toLowerCase())));
-  };
-
   return (
     <div className="relative dark:bg-gray-900 rounded-md">
-      <svg className="fill-gray-250 dark:fill-white absolute left-4 top-5 w-5 h-5" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+      <svg
+        className="fill-gray-250 dark:fill-white absolute left-4 top-5 w-5 h-5"
+        viewBox="0 0 16 16"
+        xmlns="http://www.w3.org/2000/svg"
+      >
         <path
           fill-rule="evenodd"
           clip-rule="evenodd"
