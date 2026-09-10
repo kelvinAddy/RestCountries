@@ -1,12 +1,14 @@
 import Header from './components/Header';
 import CountryListPage from './pages/CountryListPage';
 import CountryDetailsPage from './pages/CountryDetailsPage';
+import ErrorPage from './pages/ErrorPage';
 import { Routes, Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 const App = () => {
   const [countryData, setCountryData] = useState(null);
+  const [errorMessage, setErrorMessage] = useState(null);
 
   useEffect(() => {
     axios
@@ -15,10 +17,13 @@ const App = () => {
       .then((data) => {
         setCountryData(data);
       })
-      .catch((error) => console.log(error.message));
+      .catch((error) => setErrorMessage(error.response));
   }, []);
 
   if (!countryData) return;
+  if (!errorMessage) {
+    return <ErrorPage />;
+  }
   return (
     <>
       <Header />
