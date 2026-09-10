@@ -22,7 +22,12 @@ const App = () => {
 
   if (!countryData) return;
   if (!errorMessage) {
-    return <ErrorPage />;
+    return (
+      <ErrorPage
+        errorMessage={errorMessage}
+        setErrorMessage={setErrorMessage}
+      />
+    );
   }
   return (
     <>
