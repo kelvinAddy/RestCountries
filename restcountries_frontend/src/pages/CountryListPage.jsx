@@ -26,7 +26,11 @@ const CountryListPage = ({ countryData }) => {
           countryData={countryData}
         />
       </div>
-      <CountryList countriesToRender={countriesToRender} />
+      <CountryList
+        countriesToRender={countriesToRender}
+        setQuery={setQuery}
+        setRegionName={setRegionName}
+      />
     </main>
   );
 };

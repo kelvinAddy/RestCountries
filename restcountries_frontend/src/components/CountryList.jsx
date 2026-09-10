@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import EmptySearch from './EmptySearch';
 
 const FlagImage = (props) => (
   <img
@@ -53,7 +54,10 @@ const CountryCard = ({ country }) => {
   );
 };
 
-const CountryList = ({ countriesToRender }) => {
+const CountryList = ({ countriesToRender, setRegionName, setQuery }) => {
+  if (countriesToRender.length === 0) {
+    return <EmptySearch setRegionName={setRegionName} setQuery={setQuery} />;
+  }
   return (
     <div className="flex flex-col gap-10 justify-center items-center sm:flex-row sm:flex-wrap ">
       {countriesToRender.map((country) => (
