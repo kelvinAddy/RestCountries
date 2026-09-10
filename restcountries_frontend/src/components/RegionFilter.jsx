@@ -19,12 +19,13 @@ const RegionFilter = ({ countryData, setRegionName, regionName }) => {
     return () => document.body.removeEventListener('mousedown', closeDropdown);
   }, [isOpen]);
 
+  const getCountryRegions = (countryData) => {
+    return new Set(countryData.map((country) => country.region));
+  };
+
   const regionsEl = (
     <ul className="bg-white dark:bg-gray-900 z-20 px-6 py-4 w-full absolute left-0 top-full mt-2 rounded-md shadow-md">
-      {[
-        'All Countries',
-        ...new Set(countryData.map((country) => country.region)),
-      ].map((region) => (
+      {['All Countries', ...getCountryRegions(countryData)].map((region) => (
         <li key={region}>
           <button
             type="button"
