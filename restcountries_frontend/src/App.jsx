@@ -19,7 +19,6 @@ const App = () => {
         setCountryData(data);
       })
       .catch((error) => {
-        console.log(error.response);
         setErrorMessage(error.response);
       });
   }, []);
