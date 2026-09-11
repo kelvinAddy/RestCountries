@@ -1,7 +1,8 @@
 import Header from './components/Header';
 import CountryListPage from './pages/CountryListPage';
 import CountryDetailsPage from './pages/CountryDetailsPage';
-import ErrorPage from './pages/ErrorPage';
+import ServerErrorPage from './pages/ServerErrorPage';
+import PageNotFound from './pages/PageNotFound';
 import { Routes, Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
@@ -17,30 +18,37 @@ const App = () => {
       .then((data) => {
         setCountryData(data);
       })
-      .catch((error) => setErrorMessage(error.response));
+      .catch((error) => {
+        console.log(error.response);
+        setErrorMessage(error.response);
+      });
   }, []);
 
+  if (errorMessage) return <ServerErrorPage errorMessage={errorMessage} />;
   if (!countryData) return;
-  if (!errorMessage) {
-    return (
-      <ErrorPage
-        errorMessage={errorMessage}
-        setErrorMessage={setErrorMessage}
-      />
-    );
-  }
   return (
     <>
       <Header />
       <Routes>
         <Route
           path="/"
-          element={<CountryListPage countryData={countryData} />}
+          element={
+            <CountryListPage
+              countryData={countryData}
+              setErrorMessage={setErrorMessage}
+            />
+          }
         />
         <Route
           path="/countries/:id"
-          element={<CountryDetailsPage countryData={countryData} />}
+          element={
+            <CountryDetailsPage
+              countryData={countryData}
+              setErrorMessage={setErrorMessage}
+            />
+          }
         />
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </>
   );

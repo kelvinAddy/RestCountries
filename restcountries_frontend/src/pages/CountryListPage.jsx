@@ -3,7 +3,7 @@ import RegionFilter from '../components/RegionFilter';
 import CountryList from '../components/CountryList';
 import { useState } from 'react';
 
-const CountryListPage = ({ countryData }) => {
+const CountryListPage = ({ countryData, setErrorMessage }) => {
   const [query, setQuery] = useState('');
   const [regionName, setRegionName] = useState(null);
 
