@@ -5,7 +5,7 @@ const CountryDetailsPage = ({ countryData }) => {
   const navigate = useNavigate();
   const match = useMatch(`/countries/:id`);
   const matchedCountry = countryData.find(
-    (country) => country.name === match.params.id,
+    (country) => country.name.toLowerCase() === match.params.id.toLowerCase(),
   );
 
   const getBorderCountries = (borderArray) => {
