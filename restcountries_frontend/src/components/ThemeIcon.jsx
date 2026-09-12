@@ -5,22 +5,8 @@ const ThemeIcon = () => {
   const documentRef = useRef(document.documentElement);
 
   useEffect(() => {
-    if (!theme) {
-      const isDarkTheme = window.matchMedia(
-        '(prefers-color-scheme: dark)',
-      ).matches;
-      documentRef.current.classList.toggle(
-        'dark',
-        localStorage.theme === 'dark' ||
-          (!('theme' in localStorage) && isDarkTheme),
-      );
-      setTheme(isDarkTheme ? 'dark' : 'light');
-    }
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem('theme', theme);
     documentRef.current.classList.toggle('dark', theme === 'dark');
+    localStorage.setItem('theme', theme);
   }, [theme]);
 
   const changeTheme = () => {

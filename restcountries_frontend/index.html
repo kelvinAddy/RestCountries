@@ -7,6 +7,14 @@
   </head>
   <body class="font-nunitoSans dark:bg-gray-950">
     <div id="root"></div>
+    <script>
+      const theme = localStorage.getItem('theme');
+      const isdark = theme
+        ? theme === 'dark'
+        : matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.classList.toggle('dark', isdark);
+      localStorage.setItem('theme', isdark ? 'dark' : 'light');
+    </script>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
