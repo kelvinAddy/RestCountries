@@ -8,14 +8,14 @@ const CountryListPage = ({ countryData, isLoading }) => {
   const [query, setQuery] = useState('');
   const [regionName, setRegionName] = useState(null);
 
-  const loadingSkeletons =
+  const skeletonCards =
     isLoading &&
     [...Array(250)].map((card, index) => {
       return <CountryCardSkeleton key={index} />;
     });
 
   const countriesToRender = isLoading
-    ? loadingSkeletons
+    ? skeletonCards
     : countryData.filter((data) => {
         const searchResults = data.name
           .toLowerCase()
