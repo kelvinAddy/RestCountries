@@ -10,21 +10,23 @@ import axios from 'axios';
 const App = () => {
   const [countryData, setCountryData] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     axios
-      .get('/countries/data')
+      .get('/api/countries')
       .then((res) => res.data)
       .then((data) => {
         setCountryData(data);
+        setIsLoading(false);
       })
       .catch((error) => {
-        setErrorMessage(error.response);
+        setErrorMessage(error);
+        setIsLoading(false);
       });
   }, []);
 
   if (errorMessage) return <ServerErrorPage errorMessage={errorMessage} />;
-  if (!countryData) return;
   return (
     <>
       <Header />
@@ -32,10 +34,7 @@ const App = () => {
         <Route
           path="/"
           element={
-            <CountryListPage
-              countryData={countryData}
-              setErrorMessage={setErrorMessage}
-            />
+            <CountryListPage countryData={countryData} isLoading={isLoading} />
           }
         />
         <Route
@@ -43,7 +42,7 @@ const App = () => {
           element={
             <CountryDetailsPage
               countryData={countryData}
-              setErrorMessage={setErrorMessage}
+              isLoading={isLoading}
             />
           }
         />

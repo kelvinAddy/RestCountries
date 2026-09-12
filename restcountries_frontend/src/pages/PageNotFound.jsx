@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 const PageNotFound = () => {
   return (
-    <main className="my-70  text-center dark:text-white">
+    <main className="mt-60  text-center dark:text-white">
       <div>
         <h1 className="text-8xl font-extrabold text-gray-950 dark:text-inherit">
           404

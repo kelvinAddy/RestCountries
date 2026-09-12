@@ -1,6 +1,11 @@
 import { useState, useRef, useEffect } from 'react';
 
-const RegionFilter = ({ countryData, setRegionName, regionName }) => {
+const RegionFilter = ({
+  countryData,
+  setRegionName,
+  regionName,
+  isLoading,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropDownRef = useRef(null);
 
@@ -23,7 +28,7 @@ const RegionFilter = ({ countryData, setRegionName, regionName }) => {
     return new Set(countryData.map((country) => country.region));
   };
 
-  const regionsEl = (
+  const regionsEl = !isLoading && (
     <ul className="bg-white dark:bg-gray-900 z-20 px-6 py-4 w-full absolute left-0 top-full mt-2 rounded-md shadow-md">
       {['All Countries', ...getCountryRegions(countryData)].map((region) => (
         <li key={region}>

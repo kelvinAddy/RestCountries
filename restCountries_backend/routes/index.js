@@ -18,7 +18,7 @@ app.use(
   morgan(':method :url :status :res[content-length] - :response-time ms :body'),
 );
 
-app.get('/countries/data', (req, res, next) => {
+app.get('/api/countries', (req, res, next) => {
   CountryModel.find({})
     .then((data) => res.json(data))
     .catch(next);

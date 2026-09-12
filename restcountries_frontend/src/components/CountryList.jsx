@@ -4,14 +4,15 @@ import EmptySearch from './EmptySearch';
 const FlagImage = (props) => (
   <img
     className="w-full h-3/5 object-cover rounded-t-md"
-    src={`${props.flags?.svg}`}
+    loading="lazy"
+    src={`${props.flags?.png}`}
     alt={`Flag of ${props.name}`}
   />
 );
 
 const CountryDetails = (props) => {
   return (
-    <div className="ml-6 mb-12 mt-5 text-gray-950 dark:text-white">
+    <div className="ml-6 mb-12 mt-5 text-gray-900 dark:text-white">
       <h2 className="text-lg font-extrabold  mb-2"> {props.name}</h2>
       <div>
         <p>
@@ -54,17 +55,24 @@ const CountryCard = ({ country }) => {
   );
 };
 
-const CountryList = ({ countriesToRender, setRegionName, setQuery }) => {
+const CountryList = ({
+  countriesToRender,
+  setRegionName,
+  setQuery,
+  isLoading,
+}) => {
   if (countriesToRender.length === 0) {
     return <EmptySearch setRegionName={setRegionName} setQuery={setQuery} />;
   }
   return (
     <div className="flex flex-col gap-10 justify-center items-center sm:flex-row sm:flex-wrap ">
-      {countriesToRender.map((country) => (
-        <Link key={country.name} to={`/countries/${country.name}`}>
-          <CountryCard country={country} key={country.name} />
-        </Link>
-      ))}
+      {isLoading
+        ? countriesToRender
+        : countriesToRender.map((country) => (
+            <Link key={country.name} to={`/countries/${country.name}`}>
+              <CountryCard country={country} key={country.name} />
+            </Link>
+          ))}
     </div>
   );
 };

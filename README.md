@@ -55,8 +55,7 @@ Users should be able to:
 
 ### Continued development
 
-- Fix some react-router bugs
-- Use an actual API rather than countries data stored in a database
+- Implement pagination for the country list data
 
 ## Author
 

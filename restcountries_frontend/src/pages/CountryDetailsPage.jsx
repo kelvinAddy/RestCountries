@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom';
 import { useMatch, useNavigate } from 'react-router-dom';
 import PageNotFound from './PageNotFound';
+import CountryDetailsPageSkeleton from '../components/CountryDetailsPageSkeleton';
 
-const CountryDetailsPage = ({ countryData }) => {
+const CountryDetailsPage = ({ countryData, isLoading }) => {
+  if (isLoading) return <CountryDetailsPageSkeleton />;
   const navigate = useNavigate();
   const match = useMatch(`/countries/:id`);
   const matchedCountry = countryData.find(
