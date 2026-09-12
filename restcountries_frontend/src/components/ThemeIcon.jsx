@@ -70,7 +70,7 @@ const ThemeIcon = () => {
           />
         </svg>
       )}
-      <span className="text-3 font-semibold ">
+      <span className="text-sm font-semibold ">
         {theme === 'dark' ? 'Light mode' : 'Dark mode'}
       </span>
     </button>

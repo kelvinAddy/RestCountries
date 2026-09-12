@@ -1,6 +1,6 @@
 const SeverError = ({ errorMessage }) => {
   return (
-    <div className="h-screen flex flex-col justify-center items-center">
+    <main className="h-screen flex flex-col justify-center items-center">
       <h1 className="text-8xl font-extrabold text-red-500">
         {errorMessage?.status}
       </h1>
@@ -11,7 +11,7 @@ const SeverError = ({ errorMessage }) => {
       <p className="text-xl text-gray-800 mt-4">
         Please refresh the page later
       </p>
-    </div>
+    </main>
   );
 };
 

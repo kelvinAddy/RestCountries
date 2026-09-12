@@ -18,7 +18,7 @@ const CountryDetailsPage = ({ countryData }) => {
 
   if (!matchedCountry) return <PageNotFound />;
   return (
-    <section className="flex flex-col justify-center items-center dark:text-white">
+    <main className="flex flex-col justify-center items-center dark:text-white">
       <div className="w-12/13">
         <button
           onClick={() => navigate(-1)}
@@ -131,7 +131,7 @@ const CountryDetailsPage = ({ countryData }) => {
           </div>
         </div>
       </div>
-    </section>
+    </main>
   );
 };
 
