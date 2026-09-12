@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useMatch, useNavigate } from 'react-router-dom';
+import PageNotFound from './PageNotFound';
 
 const CountryDetailsPage = ({ countryData }) => {
   const navigate = useNavigate();
@@ -15,6 +16,7 @@ const CountryDetailsPage = ({ countryData }) => {
     );
   };
 
+  if (!matchedCountry) return <PageNotFound />;
   return (
     <section className="flex flex-col justify-center items-center dark:text-white">
       <div className="w-12/13">
