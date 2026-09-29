@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
-import EmptySearch from './EmptySearch';
+import { Link } from 'react-router-dom'
+import EmptySearch from './EmptySearch'
 
 const FlagImage = (props) => (
   <img
@@ -8,7 +8,7 @@ const FlagImage = (props) => (
     src={`${props.flags?.png}`}
     alt={`Flag of ${props.name}`}
   />
-);
+)
 
 const CountryDetails = (props) => {
   return (
@@ -38,8 +38,8 @@ const CountryDetails = (props) => {
         </p>
       </div>
     </div>
-  );
-};
+  )
+}
 
 const CountryCard = ({ country }) => {
   return (
@@ -52,8 +52,8 @@ const CountryCard = ({ country }) => {
         population={country.population}
       />
     </div>
-  );
-};
+  )
+}
 
 const CountryList = ({
   countriesToRender,
@@ -62,19 +62,19 @@ const CountryList = ({
   isLoading,
 }) => {
   if (countriesToRender.length === 0) {
-    return <EmptySearch setRegionName={setRegionName} setQuery={setQuery} />;
+    return <EmptySearch setRegionName={setRegionName} setQuery={setQuery} />
   }
   return (
     <div className="flex flex-col gap-10 justify-center items-center sm:flex-row sm:flex-wrap ">
       {isLoading
         ? countriesToRender
         : countriesToRender.map((country) => (
-            <Link key={country.name} to={`/countries/${country.name}`}>
-              <CountryCard country={country} key={country.name} />
-            </Link>
-          ))}
+          <Link key={country.name} to={`/countries/${country.name}`}>
+            <CountryCard country={country} key={country.name} />
+          </Link>
+        ))}
     </div>
-  );
-};
+  )
+}
 
-export default CountryList;
+export default CountryList

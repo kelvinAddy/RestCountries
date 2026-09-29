@@ -11,7 +11,7 @@ const CountryCardSkeleton = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default CountryCardSkeleton;
+export default CountryCardSkeleton

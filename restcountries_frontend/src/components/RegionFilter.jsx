@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react'
 
 const RegionFilter = ({
   countryData,
@@ -6,27 +6,27 @@ const RegionFilter = ({
   regionName,
   isLoading,
 }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const dropDownRef = useRef(null);
+  const [isOpen, setIsOpen] = useState(false)
+  const dropDownRef = useRef(null)
 
   const handleDropdown = (region) => {
-    setRegionName(region);
-    setIsOpen(false);
-  };
+    setRegionName(region)
+    setIsOpen(false)
+  }
 
   useEffect(() => {
     const closeDropdown = (e) => {
       if (isOpen && !dropDownRef.current.contains(e.target)) {
-        setIsOpen(false);
+        setIsOpen(false)
       }
-    };
-    document.body.addEventListener('mousedown', closeDropdown);
-    return () => document.body.removeEventListener('mousedown', closeDropdown);
-  }, [isOpen]);
+    }
+    document.body.addEventListener('mousedown', closeDropdown)
+    return () => document.body.removeEventListener('mousedown', closeDropdown)
+  }, [isOpen])
 
   const getCountryRegions = (countryData) => {
-    return new Set(countryData.map((country) => country.region));
-  };
+    return new Set(countryData.map((country) => country.region))
+  }
 
   const regionsEl = !isLoading && (
     <ul className="bg-white dark:bg-gray-900 z-20 px-6 py-4 w-full absolute left-0 top-full mt-2 rounded-md shadow-md">
@@ -42,11 +42,11 @@ const RegionFilter = ({
         </li>
       ))}
     </ul>
-  );
+  )
 
   const handleButtonClick = () => {
-    setIsOpen(!isOpen);
-  };
+    setIsOpen(!isOpen)
+  }
   return (
     <div
       ref={dropDownRef}
@@ -58,7 +58,7 @@ const RegionFilter = ({
       </button>
       {isOpen && regionsEl}
     </div>
-  );
-};
+  )
+}
 
-export default RegionFilter;
+export default RegionFilter

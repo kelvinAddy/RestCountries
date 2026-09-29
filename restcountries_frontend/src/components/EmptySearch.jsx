@@ -1,8 +1,8 @@
 const EmptySearch = ({ setRegionName, setQuery }) => {
   const resetSearch = () => {
-    setRegionName(null);
-    setQuery('');
-  };
+    setRegionName(null)
+    setQuery('')
+  }
   return (
     <div className="dark:text-white text-lg text-center my-20">
       <p>
@@ -15,7 +15,7 @@ const EmptySearch = ({ setRegionName, setQuery }) => {
         </button>
       </p>
     </div>
-  );
-};
+  )
+}
 
-export default EmptySearch;
+export default EmptySearch

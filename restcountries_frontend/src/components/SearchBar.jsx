@@ -1,7 +1,7 @@
 const SearchBar = ({ setQuery, query }) => {
   const handleSearch = (e) => {
-    setQuery(e.target.value);
-  };
+    setQuery(e.target.value)
+  }
   return (
     <div className="relative dark:bg-gray-900 rounded-md">
       <svg
@@ -27,7 +27,7 @@ const SearchBar = ({ setQuery, query }) => {
         placeholder="Search for a country..."
       />
     </div>
-  );
-};
+  )
+}
 
-export default SearchBar;
+export default SearchBar

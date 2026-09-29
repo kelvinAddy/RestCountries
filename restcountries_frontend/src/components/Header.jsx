@@ -1,4 +1,4 @@
-import ThemeIcon from './ThemeIcon';
+import ThemeIcon from './ThemeIcon'
 
 const Header = () => {
   return (
@@ -8,7 +8,7 @@ const Header = () => {
         <ThemeIcon />
       </div>
     </header>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

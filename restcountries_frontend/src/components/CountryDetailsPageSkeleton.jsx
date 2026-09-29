@@ -38,7 +38,7 @@ const CountryDetailsPageSkeleton = () => {
         </div>
       </div>
     </main>
-  );
-};
+  )
+}
 
-export default CountryDetailsPageSkeleton;
+export default CountryDetailsPageSkeleton

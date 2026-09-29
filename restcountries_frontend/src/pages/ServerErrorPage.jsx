@@ -15,7 +15,7 @@ const SeverError = ({ errorMessage }) => {
         Please refresh the page later
       </p>
     </main>
-  );
-};
+  )
+}
 
-export default SeverError;
+export default SeverError

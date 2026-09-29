@@ -7,9 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "deploytobackend": "vite build && cp -r dist ../restCountries_backend/public && rm -rf dist",
-    "lint": "eslint .",
-    "preview": "vite preview",
-    "server": "json-server -p 10000 ./src/data.json"
+    "lint": "eslint . --fix  ",
+    "preview": "vite preview"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.3",
