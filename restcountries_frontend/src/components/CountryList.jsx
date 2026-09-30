@@ -2,12 +2,7 @@ import { Link } from 'react-router-dom'
 import EmptySearch from './EmptySearch'
 
 const FlagImage = (props) => (
-  <img
-    className="w-full h-3/5 object-cover rounded-t-md"
-    loading="lazy"
-    src={`${props.flags?.png}`}
-    alt={`Flag of ${props.name}`}
-  />
+  <img className="w-full h-3/5 object-cover rounded-t-md" loading="lazy" src={`${props.flags?.png}`} alt={`Flag of ${props.name}`} />
 )
 
 const CountryDetails = (props) => {
@@ -17,24 +12,15 @@ const CountryDetails = (props) => {
       <div>
         <p>
           <span className="font-semibold text-sm">Population:</span>
-          <span className="font-light text-sm">
-            {' '}
-            {props.population ?? 'Unknown'}
-          </span>
+          <span className="font-light text-sm"> {props.population ?? 'Unknown'}</span>
         </p>
         <p>
           <span className="font-semibold text-sm">Region:</span>
-          <span className="font-light text-sm">
-            {' '}
-            {props.region ?? 'Unknown'}
-          </span>
+          <span className="font-light text-sm"> {props.region ?? 'Unknown'}</span>
         </p>
         <p>
           <span className="font-semibold text-sm">Capital:</span>
-          <span className="font-light text-sm">
-            {' '}
-            {props.capital ?? 'Unknown'}
-          </span>
+          <span className="font-light text-sm"> {props.capital ?? 'Unknown'}</span>
         </p>
       </div>
     </div>
@@ -45,22 +31,12 @@ const CountryCard = ({ country }) => {
   return (
     <div className="rounded-md shadow-md w-80 h-96 dark:bg-gray-900 flex flex-col">
       <FlagImage flags={country.flags} />
-      <CountryDetails
-        name={country.name}
-        capital={country.capital}
-        region={country.region}
-        population={country.population}
-      />
+      <CountryDetails name={country.name} capital={country.capital} region={country.region} population={country.population} />
     </div>
   )
 }
 
-const CountryList = ({
-  countriesToRender,
-  setRegionName,
-  setQuery,
-  isLoading,
-}) => {
+const CountryList = ({ countriesToRender, setRegionName, setQuery, isLoading }) => {
   if (countriesToRender.length === 0) {
     return <EmptySearch setRegionName={setRegionName} setQuery={setQuery} />
   }
@@ -69,10 +45,10 @@ const CountryList = ({
       {isLoading
         ? countriesToRender
         : countriesToRender.map((country) => (
-          <Link key={country.name} to={`/countries/${country.name}`}>
-            <CountryCard country={country} key={country.name} />
-          </Link>
-        ))}
+            <Link key={country.name} to={`/countries/${country.name}`}>
+              <CountryCard country={country} key={country.name} />
+            </Link>
+          ))}
     </div>
   )
 }
