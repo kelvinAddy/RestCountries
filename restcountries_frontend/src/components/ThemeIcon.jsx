@@ -4,8 +4,10 @@ const ThemeIcon = () => {
   const [theme, setTheme] = useState(() => localStorage.getItem('theme'))
   const documentRef = useRef(document.documentElement)
 
-  documentRef.current.classList.toggle('dark', theme === 'dark')
-  localStorage.setItem('theme', theme)
+  useEffect(() => {
+    documentRef.current.classList.toggle('dark', theme === 'dark')
+    localStorage.setItem('theme', theme)
+  }, [theme])
 
   const changeTheme = () => {
     setTheme(theme === 'dark' ? 'light' : 'dark')
